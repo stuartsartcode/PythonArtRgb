@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools"]
+
+[project]
+name = "pythonartrgb"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["Pillow", "numpy"]
+dynamic = ["version"]
+license = "MIT"
+classifiers = ["Private :: Do Not Upload"]
+
+[tool.setuptools]
+packages = [
+    "ArtRgb",
+]
+package-dir = {"" = "src"}
