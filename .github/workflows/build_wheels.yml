@@ -24,6 +24,12 @@ jobs:
         pytest-md
         pytest-emoji
         --user
+        - name: Install pypa/build
+      run: >-
+        python3 -m
+        pip install
+        .
+        --user
     - uses: pavelzw/pytest-action@v2
       with:
         emoji: true
