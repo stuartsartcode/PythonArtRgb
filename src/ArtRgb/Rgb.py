@@ -37,16 +37,22 @@ class Rgb(collections.abc.Sequence):
             self.rgb = tuple(int(x) for x in ImageColor.getrgb(rgba))
         elif len(rgba) == 1:
             if isinstance(rgba[0], str):
-                self.rgb = tuple(int(x) for x in ImageColor.getrgb(rgba[0]))
+                self.rgb = tuple(max(0,min(255, int(x))) for x in ImageColor.getrgb(rgba[0]))
             else:
-                self.rgb = tuple(int(x) for x in rgba[0][:3])
+                self.rgb = tuple(max(0,min(255, int(x))) for x in rgba[0][:3])
         else:
-            self.rgb = tuple(int(x) for x in rgba[:3])
+            self.rgb = tuple(max(0,min(255, int(x))) for x in rgba[:3])
         self.hsv = rgb_to_hsv(self.rgb[0], self.rgb[1], self.rgb[2])
         self.hue = int(self.hsv[0]*360)
         self.hue_rgb = tuple(int(x) for x in hsv_to_rgb(self.hsv[0], 1, 256))
         self.saturation = int(self.hsv[1]*100)
         self.value = int(self.hsv[2] /255 * 100)
+    def __eq__(self, r):
+        if not isinstance(r, Rgb):
+            r = Rgb(r)
+        return self.rgb == r.rgb
+        
+
     def __len__(self): return len(self.rgb)
     def __getitem__(self, index): return self.rgb[index]
     def __str__(self): return str(self.rgb)

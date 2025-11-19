@@ -2,6 +2,7 @@
 Color library that handles common art program blend modes as well as color wheel and saturation-value box visualizations.
 
 TODO:
+- [ ] (wip) add testing
 - [ ] (wip) color wheel
 - [ ] (wip) color box
 - [ ] (maybe?) publish to PYPI?

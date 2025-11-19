@@ -1,4 +1,4 @@
-name: Build
+name: Test Pythont then Build
 
 on: [push, pull_request]
 
@@ -20,7 +20,15 @@ jobs:
         python3 -m
         pip install
         build
+        pytest
+        pytest-md
+        pytest-emoji
         --user
+    - uses: pavelzw/pytest-action@v2
+      with:
+        emoji: true
+        verbose: false
+        job-summary: true
     - name: Build a binary wheel and a source tarball
       run: python3 -m build
     - name: Store the distribution packages
