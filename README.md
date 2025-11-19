@@ -1,16 +1,18 @@
 # PythonArtRgb
+
 Color library that handles common art program blend modes as well as color wheel and saturation-value box visualizations.
 
-TODO:
-- [ ] (wip) add testing
-- [ ] (wip) color wheel
-- [ ] (wip) color box
-- [ ] (maybe?) publish to PYPI?
-- [ ] CYMK?
+Example Colorwheel:
+
+| Color Wheel: | Color Box |
+| --- | --- |
+|![Colorwheel Example](examples/images/example_colorwheel.png) | ![Colorwheel Example ](examples/images/example_colorbox.png)
+| Arrows are added corresponding to the Hue. Note the (overridable) -150 degree offset to match CSP. | Dots are placed corresponding to saturation (Y) and value (X)
 
 ## Usage
 
 Supported construction
+
 ```python
 Rgb()           # Defaults to black
 Rgb(0,0,0)
@@ -21,6 +23,7 @@ Rgb("black")    # uses PIL.ImageColor to handle named colors
 ```
 
 Color blend modes:
+
 ```python
 black = Rgb("black")
 white = Rgb("white")
@@ -40,6 +43,7 @@ black.inv_soft_light(white)
 ```
 
 HSV access
+
 ```python
 black = Rgb("black")
 black.rgb           # (0-255, 0-255, 0-255)
@@ -48,5 +52,3 @@ black.hue           # 0-360
 black.saturation    # 0-100
 black.value         # 0-100
 ```
-
-
