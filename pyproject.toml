@@ -9,6 +9,10 @@ addopts = "--cov=artrgb --cov-report html"
 [tool.coverage.run]
 omit=["*/tests/*"]
 
+[tool.setuptools]
+packages = ["artrgb"]
+package-dir = { "" = "src" }
+
 [project]
 name = "pythonartrgb"
 description = "Color utilities for artists"
@@ -25,6 +29,3 @@ test = ["pytest", "pytest-cov", "tox"]
 dev = ["black", "isort"]
 
 
-[tool.setuptools]
-packages = ["artrgb"]
-package-dir = { "" = "src" }
