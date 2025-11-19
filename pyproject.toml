@@ -11,7 +11,7 @@ omit=["*/tests/*"]
 
 [project]
 name = "pythonartrgb"
-description = "Add your description here"
+description = "Color utilities for artists"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = ["Pillow", "numpy"]
@@ -26,5 +26,5 @@ dev = ["black", "isort"]
 
 
 [tool.setuptools]
-packages = ["ArtRgb"]
+packages = ["artrgb"]
 package-dir = { "" = "src" }
