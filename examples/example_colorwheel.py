@@ -1,6 +1,7 @@
-from ArtRgb.ColorWheel import ColorWheel
-from ArtRgb.Rgb import Rgb
 from PIL import Image, ImageDraw
+
+from artrgb.color_wheel import ColorWheel
+from artrgb.rgb import Rgb
 
 image_size = 500
 wheel_size =400

@@ -1,6 +1,7 @@
-from ArtRgb.ColorBox import ColorBox
-from ArtRgb.Rgb import Rgb
 from PIL import Image, ImageDraw
+
+from artrgb.color_box import ColorBox
+from artrgb.rgb import Rgb
 
 image_size = 500
 box_size =450

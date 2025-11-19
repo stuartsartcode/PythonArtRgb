@@ -4,7 +4,10 @@ requires = ["setuptools"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+addopts = "--cov=artrgb --cov-report html"
 
+[tool.coverage.run]
+omit=["*/tests/*"]
 
 [project]
 name = "pythonartrgb"
@@ -16,8 +19,12 @@ dynamic = ["version"]
 license = "MIT"
 classifiers = ["Private :: Do Not Upload"]
 
+# uv pip install -e '.[test|dev]'
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov", "tox"]
+dev = ["black", "isort"]
+
+
 [tool.setuptools]
-packages = [
-    "ArtRgb",
-]
-package-dir = {"" = "src"}
+packages = ["ArtRgb"]
+package-dir = { "" = "src" }
