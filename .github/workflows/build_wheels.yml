@@ -24,7 +24,7 @@ jobs:
         pytest-md
         pytest-emoji
         --user
-        - name: Install pypa/build
+    - name: Install dependencies before testing
       run: >-
         python3 -m
         pip install
