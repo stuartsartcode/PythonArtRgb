@@ -9,6 +9,10 @@ Example Colorwheel:
 |![Colorwheel Example](examples/images/example_colorwheel.png) | ![Colorwheel Example ](examples/images/example_colorbox.png)
 | Arrows are added corresponding to the Hue. Note the (overridable) -150 degree offset to match CSP. | Dots are placed corresponding to saturation (Y) and value (X)
 
+| Sample Image| Swatch |
+| --- | --- |
+![](https://upload.wikimedia.org/wikipedia/commons/7/78/John_Singer_Sargent_-_Lady_Agnew_of_Lochnaw_-_Detail_1.jpg) | ![](examples/images/swatch.png)
+
 ## Usage
 
 Supported construction
