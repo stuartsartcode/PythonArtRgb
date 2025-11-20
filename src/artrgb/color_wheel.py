@@ -54,45 +54,6 @@ class ColorWheel:
             )
         image.alpha_composite(wheel_image, dest)
 
-    def draw_bar(
-        self,
-        draw: ImageDraw.ImageDraw,
-        colors: Rgb,
-        dest: tuple,
-        bar_width=15,
-        bar_fill=Rgb(),
-    ):
-        colors = [colors] if isinstance(colors, Rgb) else colors
-
-        for hue in reversed(colors):
-            bar_length = (self.size - self.inner_hole) // 2
-            degree = hue.hue + self.hue_angle_offset
-            line_colors = ["black", hue.rgb]
-            for i in range(len(line_colors)):
-                line_offset = 4 * i
-                x = (
-                    dest[0]
-                    + self.mid_point
-                    + cos(radians(degree)) * (self.inner_hole // 2)
-                )  # -line_offset)
-                y = (
-                    dest[1]
-                    + self.mid_point
-                    + sin(radians(degree)) * (self.inner_hole // 2)
-                )  # -line_offset)
-                xm = (
-                    dest[0]
-                    + self.mid_point
-                    + cos(radians(degree)) * (self.wheel_size // 2)
-                )  # +line_offset)
-                ym = (
-                    dest[1]
-                    + self.mid_point
-                    + sin(radians(degree)) * (self.wheel_size // 2)
-                )  # +line_offset)
-                draw.line(
-                    (x, y, xm, ym), fill=line_colors[i], width=bar_width - line_offset
-                )
 
     def draw_arrow(
         self,
@@ -181,58 +142,3 @@ def colorwheel(size, hue: Rgb | None = None, use_sat_val=False, count=360):
         draw.pieslice([(0, 0), (size, size)], start=start, end=end, fill=rgb)
         start = end
     return image
-
-
-def small_rainbow_pi(
-    size, hole, hues: Rgb = None, line_width=20, count=360, use_sat_val=False
-) -> Image.Image:
-    if not isinstance(hues, list):
-        hues = [hues]
-
-    have_color = len(hues) > 0
-
-    size_offset = 5
-    seg_length = int(360 / count)
-    # if 360 % seg_length != 0:
-    #     seg_length +=1
-    img = Image.new("RGBA", size=(size, size), color=(0, 0, 0, 0))
-    offset = -150
-    start = offset - seg_length // 2 - 1
-    draw = ImageDraw.Draw(img)
-    mid_point = size // 2
-    draw.circle((mid_point, mid_point), mid_point - 2, fill="black")
-
-    img.alpha_composite(
-        colorwheel(size - 2 * size_offset, None if not have_color else hues[0]),
-        (size_offset, size_offset),
-    )
-
-    for hue in reversed(hues):
-        bar_length = (size - hole) // 2
-        draw.circle((mid_point, mid_point), hole // 2 + 3, fill="black")
-        draw.circle((mid_point, mid_point), hole // 2, fill=(0, 0, 0, 0))
-        degree = hue.hue - 150
-
-        # Draw Lines
-
-        # line_colors = ["black", "white", hue.rgb]
-
-        line_colors = ["black", hue.rgb]
-        for i in range(len(line_colors)):
-            line_offset = 4 * i
-            x = mid_point + cos(radians(degree)) * (hole // 2 + line_offset)
-            y = mid_point + sin(radians(degree)) * (hole // 2 + line_offset)
-            xm = mid_point + cos(radians(degree)) * (mid_point - line_offset)
-            ym = mid_point + sin(radians(degree)) * (mid_point - line_offset)
-
-            draw.line(
-                (x, y, xm, ym), fill=line_colors[i], width=line_width - line_offset
-            )
-
-        # draw.line((x, y, xm, ym+1 ), fill="black", width=line_width)
-        # draw.line((x, y, xm, ym ), fill="white", width=line_width - 4)
-        # draw.line((x, y, xm, ym ), fill=hue.rgb, width=line_width-8)
-
-        # draw.circle((x,y), radius= line_width//2, fill="black")
-        # draw.circle((xm,ym+1), radius= line_width//2+1, fill="black")
-    return img

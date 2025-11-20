@@ -2,21 +2,26 @@
 
 Color library that handles common art program blend modes as well as color wheel and saturation-value box visualizations.
 
-Example Colorwheel:
+## Color visualization classes
 
-| Color Wheel: | Color Box |
-| --- | --- |
-|![Colorwheel Example](examples/images/example_colorwheel.png) | ![Colorwheel Example ](examples/images/example_colorbox.png)
-| Arrows are added corresponding to the Hue. Note the (overridable) -150 degree offset to match CSP. | Dots are placed corresponding to saturation (Y) and value (X)
+| Color Wheel: | Color Box | Color Wheel Box:
+| --- | --- | --- |
+|![Colorwheel Example](examples/images/example_colorwheel.png) | ![Colorwheel Example ](examples/images/example_colorbox.png) | ![Color WheelBox Example](examples/images/example_colorwheelbox.png)
+| Arrows are added corresponding to the Hue. Note the (overridable) -150 degree offset to match CSP. | Dots are placed corresponding to saturation (Y) and value (X) | Combination Wheel/Box
+| [source](src/artrgb/color_wheel.py) - [example](examples/example_colorwheel.py) | [source](src/artrgb/color_box.py) - [example](examples/example_colorbox.py) | [source](src/artrgb/color_wheel_box.py) - [example](examples/example_colorwheelbox.py)
 
-| Sample Image| Swatch |
+
+
+| Sample Image| Example Swatch analyzing skintone|
 | --- | --- |
 ![](https://upload.wikimedia.org/wikipedia/commons/7/78/John_Singer_Sargent_-_Lady_Agnew_of_Lochnaw_-_Detail_1.jpg) | ![](examples/images/swatch.png)
 
-## Usage
+## RGB class
+
+
+
 
 Supported construction
-
 ```python
 Rgb()           # Defaults to black
 Rgb(0,0,0)
@@ -26,8 +31,7 @@ Rgb((0,0,0,0))
 Rgb("black")    # uses PIL.ImageColor to handle named colors
 ```
 
-Color blend modes:
-
+### Color blend modes:
 ```python
 black = Rgb("black")
 white = Rgb("white")
@@ -46,8 +50,7 @@ black.soft_light(white)
 black.inv_soft_light(white)
 ```
 
-HSV access
-
+### HSV access
 ```python
 black = Rgb("black")
 black.rgb           # (0-255, 0-255, 0-255)

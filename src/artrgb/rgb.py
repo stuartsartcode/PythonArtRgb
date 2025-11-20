@@ -1,14 +1,12 @@
 # Implements blend modes defined in https://en.wikipedia.org/wiki/Blend_modes
 
-import collections.abc
 from colorsys import hsv_to_rgb, rgb_to_hsv
 from math import sqrt
 
 from PIL import ImageColor
 
-
-class Rgb(collections.abc.Sequence):
-    def __init__(self, *rgba: tuple):
+class Rgb(tuple):
+    def __new__(self, *rgba: tuple):
 
         if len(rgba) == 0:
             self.rgb = (0, 0, 0)
@@ -28,6 +26,7 @@ class Rgb(collections.abc.Sequence):
         self.hue_rgb = tuple(int(x) for x in hsv_to_rgb(self.hsv[0], 1, 256))
         self.saturation = int(self.hsv[1] * 100)
         self.value = int(self.hsv[2] / 255 * 100)
+        return tuple.__new__(Rgb, self.rgb)
 
     def __eq__(self, r):
         if not isinstance(r, Rgb):
