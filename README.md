@@ -2,6 +2,11 @@
 
 Color library that handles common art program blend modes as well as color wheel and saturation-value box visualizations.
 
+Installation only through source at the moment. Will try to release to Pypi when i have some time.
+```
+pip install git+https://github.com/stuartsartcode/PythonArtRgb
+```
+
 ## Color visualization classes
 
 | Color Wheel: | Color Box | Color Wheel Box:
