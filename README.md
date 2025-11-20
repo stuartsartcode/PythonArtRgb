@@ -11,15 +11,31 @@ Color library that handles common art program blend modes as well as color wheel
 | [source](src/artrgb/color_wheel.py) - [example](examples/example_colorwheel.py) | [source](src/artrgb/color_box.py) - [example](examples/example_colorbox.py) | [source](src/artrgb/color_wheel_box.py) - [example](examples/example_colorwheelbox.py)
 
 
-
 | Sample Image| Example Swatch analyzing skintone|
 | --- | --- |
 ![](https://upload.wikimedia.org/wikipedia/commons/7/78/John_Singer_Sargent_-_Lady_Agnew_of_Lochnaw_-_Detail_1.jpg) | ![](examples/images/swatch.png)
 
 ## RGB class
+Features:
+- treated as a normal tupple by other image libraries
+- CSP styled hue, saturation, and value
+- Normalized HST
+- blend modes
 
+```python
+red = Rgb("red") # (255,0,0)
 
-
+PIL.Image.new("RGB", (100,100), color = black)
+red[0] # 255
+red[1] # 0
+red[2] # 0
+len(red) # 3
+red.rgb # (255,0,0)
+red.hsv # (0,1,255)
+red.hue # 0
+red.saturation # 100
+red.value # 100
+```
 
 Supported construction
 ```python
